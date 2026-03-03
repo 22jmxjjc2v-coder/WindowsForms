@@ -24,15 +24,27 @@ namespace Clock
                 labelTime.Text += $"\n{DateTime.Now.ToString("yyyy:MM:dd")}";
             if (cbShowDate.Checked)
                 labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
-        
+
+        }
+
+        void SetVisibility(bool visible)
+        {
+            cbShowDate.Visible = visible;
+            cbShowWeekday.Visible = visible;
+            btnHideControls.Visible = visible;
+            ShowInTaskbar = visible;
+            FormBorderStyle = visible ? FormBorderStyle.FixedToolWindow : FormBorderStyle.None;
+            this.TransparencyKey = visible ? Color.Empty : this.BackColor;
         }
 
         private void btnHideControls_Click(object sender, EventArgs e)
         {
-            cbShowDate.Visible = false;
-            cbShowWeekday.Visible = false;
-            btnHideControls.Visible = false;
-            ShowInTaskbar = false;
+            SetVisibility(false);
+        }
+
+        private void labelTime_DoubleClick(object sender, EventArgs e)
+        {
+            SetVisibility(true);
         }
     }
 }

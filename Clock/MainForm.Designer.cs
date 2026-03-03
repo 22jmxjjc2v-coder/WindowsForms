@@ -40,12 +40,14 @@
             // labelTime
             // 
             this.labelTime.AutoSize = true;
+            this.labelTime.BackColor = System.Drawing.SystemColors.Highlight;
             this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTime.Location = new System.Drawing.Point(12, 9);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(258, 51);
             this.labelTime.TabIndex = 0;
             this.labelTime.Text = "Current time";
+            this.labelTime.DoubleClick += new System.EventHandler(this.labelTime_DoubleClick);
             // 
             // timer
             // 
@@ -76,12 +78,14 @@
             // 
             // btnHideControls
             // 
+            this.btnHideControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnHideControls.Location = new System.Drawing.Point(12, 280);
             this.btnHideControls.Name = "btnHideControls";
             this.btnHideControls.Size = new System.Drawing.Size(357, 96);
             this.btnHideControls.TabIndex = 3;
-            this.btnHideControls.Text = "button1";
+            this.btnHideControls.Text = "Hide Controls";
             this.btnHideControls.UseVisualStyleBackColor = true;
+            this.btnHideControls.Click += new System.EventHandler(this.btnHideControls_Click);
             // 
             // MainForm
             // 
