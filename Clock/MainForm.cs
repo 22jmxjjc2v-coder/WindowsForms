@@ -15,6 +15,7 @@ namespace Clock
         public MainForm()
         {
             InitializeComponent();
+            tsmiShowControls.Checked = true;    
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -22,9 +23,9 @@ namespace Clock
             labelTime.Text = DateTime.Now.ToString("HH:mm:ss");
             if (cbShowDate.Checked)
                 labelTime.Text += $"\n{DateTime.Now.ToString("yyyy:MM:dd")}";
-            if (cbShowDate.Checked)
+            if (cbShowWeekday.Checked)
                 labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
-            notifyIcon1.Text = labelTime.Text; 
+            notifyIcon1.Text = labelTime.Text;
         }
 
         void SetVisibility(bool visible)
@@ -45,6 +46,36 @@ namespace Clock
         private void labelTime_DoubleClick(object sender, EventArgs e)
         {
             SetVisibility(true);
+        }
+
+        private void tsmiTopmost_CheckedChanged(object sender, EventArgs e) =>
+        this.TopMost = tsmiTopmost.Checked;
+
+        private void tsmoClose_Click(object sender, EventArgs e) =>
+            this.Close();
+        
+        private void tsmiShowControls_CheckedChanged(object sender, EventArgs e) =>
+            SetVisibility(tsmiShowControls.Checked);
+
+        private void tsmiShowDate_CheckedChanged(object sender, EventArgs e) =>
+            cbShowDate.Checked = tsmiShowDate.Checked;
+
+        private void cbShowDate_CheckedChanged(object sender, EventArgs e) =>
+            tsmiShowDate.Checked = cbShowDate.Checked;
+
+        private void tsmiShowWeekday_CheckedChanged(object sender, EventArgs e) =>
+            cbShowWeekday.Checked = (sender as ToolStripMenuItem).Checked;
+
+        private void cbShowWeekday_CheckedChanged(object sender, EventArgs e) =>
+            tsmiShowWeekday.Checked = (sender as CheckBox).Checked;
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if(!this.TopMost)
+            {
+                this.TopMost = true;
+                this.TopMost = false;
+            }
         }
     }
 }
